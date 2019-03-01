@@ -52,9 +52,9 @@
                   <tr>
                       <td>{{lancamento.codigo}}</td>
                       <td>{{lancamento.descricao}}</td>
-                      <td>{{lancamento.dataVencimento}}</td>
-                      <td>{{lancamento.dataPagamento}}</td>
-                      <td><span [style.color]="lancamento.tipo==='DESPESA' ? 'red' : 'blue'"> {{lancamento.valor}}</span></td>
+                      <td>{{lancamento.dataVencimento|date:"MM/dd/yy"}}</td>
+                      <td>{{lancamento.dataPagamento|date:"MM/dd/yy"}}</td>
+                      <td><span [style.color]="lancamento.tipo==='DESPESA' ? 'red' : 'blue'"> {{lancamento.valor|}}</span></td>
                       <td>{{lancamento.tipo}}</td>
                       <td>{{lancamento.categoria}}</td>
                       <td>{{lancamento.pessoa}}</td>
