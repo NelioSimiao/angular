@@ -19,7 +19,7 @@ export class LancamentoCadastroComponent implements OnInit {
   pessoas = [
     { label: 'Nelio Simiao Muchisse', value: 1 },
     { label: 'Mateus joao Mateu', value: 2 },
-    { label: 'Maria salolo mmas', value: 3},
+    { label: 'Dassone Alfredo Mecamo', value: 3},
 
   ];
   constructor() { }

@@ -1,5 +1,5 @@
 <div class="container">
-  <form>
+  <form  autocomplete="off">
 
     <div class="ui-g">
       <div class="ui-g-12">
@@ -11,37 +11,69 @@
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label>Vencimento</label>
-        <p-calendar dateFormat="dd/mm/yy" [showIcon]="true"> </p-calendar>
+        <p-calendar dateFormat="dd/mm/yy" [showIcon]="true"  name="dataVenc" 
+        ngModel #dataVenc="ngModel" required > </p-calendar>
+
+        <app-message [control]="dataVenc" error="required" 
+        text="Informe a Data de Vencimento">
+         </app-message>
       </div>
 
       <div class="ui-g-6 ui-md-3  ui-fluid">
         <label>{{tipo.value==='RECEITA'?'Vencimento':'Pagamento'}}</label>
-        <p-calendar dateFormat="dd/mm/yy" [showIcon]="true"> </p-calendar>
+        <p-calendar dateFormat="dd/mm/yy" [showIcon]="true"  name="data" 
+        ngModel #data="ngModel" required> </p-calendar>
+
+        <app-message [control]="data" error="required" 
+        text="Informe a Data.">
+         </app-message>
       </div>
+
+
       <div class="ui-g-12  ui-md-9 ui-fluid">
-        <label>Descricao</label>
-        <input pInputText type="text">
+        <label>Descrição</label>
+        <input pInputText type="text" name="descricao"
+         ngModel #descricao="ngModel" required minlength="5">
+
+         <app-message [control]="descricao" error="required" 
+          text="Informe uma descrição.">
+         </app-message>
+
+         <app-message [control]="descricao" error="minlength" 
+         text="Minimo de {{descricao.errors?.minlength?.requiredLength}} caracteres.">
+         </app-message>
       </div>
+
+
 
       <div class="ui-g-12   ui-md-3 ui-fluid">
         <label>Valor</label>
-        <input pInputText type="text" placeholder="0.00">
+
+        <input  currencyMask pInputText type="text"
+        [options]="{ prefix: ' ', thousands: '.', decimal: ',',allowNegative:false }"
+        placeholder="0.00" ngModel name="valor">
       </div>
+
+
 
       <div class="ui-g-12  ui-md-6 ui-fluid">
         <label>Categoria</label>
-        <p-dropdown [options]="categorias"[autoWidth]="false" placeholder="Selecione"></p-dropdown>
+        <p-dropdown [options]="categorias"[autoWidth]="false" 
+        placeholder="Selecione" name="categoria"  
+        required ngModel #categoria ></p-dropdown>
       </div>
 
       <div class="ui-g-12  ui-md-6 ui-fluid">
         <label>Pessoa</label>
         <p-dropdown [options]="pessoas"[autoWidth]="false" [filter]="true"
-        placeholder="Selecione"></p-dropdown>
+        placeholder="Selecione"   name="pessoa"  
+        required ngModel #pessoa></p-dropdown>
       </div>
 
       <div class="ui-g-12 ui-fluid">
-        <label>Observacao</label>
-        <textarea pInputTextarea rows="5"> </textarea>
+        <label>Observação</label>
+        <textarea pInputTextarea rows="5"  name="observacao"  
+         ngModel #observacao> </textarea>
       </div>
 
       <div class="ui-g-12">
