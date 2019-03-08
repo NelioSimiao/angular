@@ -14,9 +14,9 @@
         <p-calendar dateFormat="dd/mm/yy" [showIcon]="true"  name="dataVenc" 
         ngModel #dataVenc="ngModel" required > </p-calendar>
 
-        <app-message [control]="dataVenc" error="required" 
+       <app-message [control]="dataVenc" error="required" 
         text="Informe a Data de Vencimento">
-         </app-message>
+         </app-message>  
       </div>
 
       <div class="ui-g-6 ui-md-3  ui-fluid">
@@ -24,9 +24,9 @@
         <p-calendar dateFormat="dd/mm/yy" [showIcon]="true"  name="data" 
         ngModel #data="ngModel" required> </p-calendar>
 
-        <app-message [control]="data" error="required" 
+       <app-message [control]="data" error="required" 
         text="Informe a Data.">
-         </app-message>
+         </app-message> 
       </div>
 
 
@@ -37,11 +37,11 @@
 
          <app-message [control]="descricao" error="required" 
           text="Informe uma descrição.">
-         </app-message>
+         </app-message> 
 
-         <app-message [control]="descricao" error="minlength" 
+       <app-message [control]="descricao" error="minlength" 
          text="Minimo de {{descricao.errors?.minlength?.requiredLength}} caracteres.">
-         </app-message>
+         </app-message> 
       </div>
 
 
@@ -51,7 +51,7 @@
 
         <input  currencyMask pInputText type="text"
         [options]="{ prefix: ' ', thousands: '.', decimal: ',',allowNegative:false }"
-        placeholder="0.00" ngModel name="valor">
+        placeholder="0.00" ngModel name="valor"> 
       </div>
 
 
