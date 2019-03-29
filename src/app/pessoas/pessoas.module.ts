@@ -1,25 +1,23 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
-import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
-import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
+import {PessoaCadastroComponent} from './pessoa-cadastro/pessoa-cadastro.component';
+import {PessoasPesquisaComponent} from './pessoas-pesquisa/pessoas-pesquisa.component';
+import {PessoasGridComponent} from './pessoas-grid/pessoas-grid.component';
 
-
-import { InputTextModule } from 'primeng/components/inputtext/inputtext';
-import { ButtonModule } from 'primeng/components/button/button';
-import { TableModule } from 'primeng/components/table/table';
-import { TooltipModule } from 'primeng/components/tooltip/tooltip';
-import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
-import { FormsModule } from '@angular/forms';
-import { SharedModule } from '../shared/shared.module';
+import {InputTextModule} from 'primeng/components/inputtext/inputtext';
+import {ButtonModule} from 'primeng/components/button/button';
+import {TableModule} from 'primeng/components/table/table';
+import {TooltipModule} from 'primeng/components/tooltip/tooltip';
+import {InputMaskModule} from 'primeng/components/inputmask/inputmask';
+import {FormsModule} from '@angular/forms';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     PessoasPesquisaComponent,
     PessoaCadastroComponent,
     PessoasGridComponent,
-
   ],
   imports: [
     CommonModule,
@@ -29,12 +27,9 @@ import { SharedModule } from '../shared/shared.module';
     TooltipModule,
     InputMaskModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
 
-  exports:[
-    PessoasPesquisaComponent,
-    PessoaCadastroComponent
-  ]
+  exports: [PessoasPesquisaComponent, PessoaCadastroComponent],
 })
-export class PessoasModule { }
+export class PessoasModule {}

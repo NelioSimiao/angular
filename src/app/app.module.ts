@@ -5,7 +5,9 @@ import {AppComponent} from './app.component';
 import {LancamentosModule} from './lancamentos/lancamentos.module';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { CoreModule } from './core/core.module';
+import { LancamentoService } from './lancamentos/lancamento.service';
 
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -13,9 +15,11 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     LancamentosModule,
     PessoasModule,
+    HttpClientModule,
+
     CoreModule
   ],
-  providers: [],
+  providers: [LancamentoService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
