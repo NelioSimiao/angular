@@ -1,44 +1,97 @@
 <div class="container">
 
-  <div class="ui-g">
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
+      <div class="ui-g">
 
+        <div class="ui-g-12">
+          <h1>Lançamento</h1>
+        </div>
+
+        <div  class="ui-g-12 ui-fluid">
+          <label>Descrição</label>
+          <input type="text" pInputText name="descricao"
+          [(ngModel)]="filtro.descricao">
+        </div>
+
+        <div class="ui-g-12">
+          <label style="display: block"> Vencimento </label>
+          <p-calendar dateFormat="dd/mm/yy" [showIcon]="true"   [inputStyle]="{width: '95px'}" 
+           name="dataVencimentoInicio" [(ngModel)]="filtro.dataVencimentoInicio" > </p-calendar>
+
+
+
+          <label style="margin: 5px"> até </label>
+          <p-calendar dateFormat="dd/mm/yy" [showIcon]="true"   [inputStyle]="{width: '95px'}" 
+           name="dataVencimentoFim" [(ngModel)]="filtro.dataVencimentoFim" > </p-calendar>        </div>
+
+          <div class="ui-g-12">
+              <label >
+                <button pButton type="submit" label="Pesquisar" (ngSubmit)="pesquisar()" ></button>
+              </label>
+          </div>
+
+          
+          
+          
+        </div>
+    </form>
+<!--
+    <div class="ui-g">
+        <div class="ui-g-12">
+        <app-lancamentos-grid [lancamentos]="lancamentos"></app-lancamentos-grid>
+        </div>
+
+    </div>
+-->
+<div class="ui-g">
     <div class="ui-g-12">
-      <h1>Lançamento</h1>
+        <p-table [value]="lancamentos" [rows]="filtro.intensPorPagina" 
+        [paginator]="true" [responsive] ="true" [lazy]="true" [totalRecords]="totalRegistos"
+        (onLazyLoad)="aoMudarPagina($event)" #table>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Descricao</th>
+                <th>Vencimento</th>
+                <th>Pagamento</th>
+                <th>Valor</th>
+                <th>Tipo</th>
+                <th>Categoria</th>
+                <th>Pessoa</th>
+                <th></th>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-lancamento>
+            <tr>
+                <td>{{lancamento.descricao}}</td>
+                <td>{{lancamento.dataVencimento|date:"MM/dd/yy"}}</td>
+                <td>{{lancamento.dataPagamento|date:"MM/dd/yy"}}</td>
+                <td><span [style.color]="lancamento.tipo==='DESPESA' ? 'red' : 'blue'"> {{lancamento.valor|number}}</span></td>
+                <td>{{lancamento.tipo}}</td>
+                <td>{{lancamento.categoria}}</td>
+                <td>{{lancamento.pessoa}}</td>
+                <td>
+
+                    <a pButton type="button" icon="pi pi-pencil" iconPos="left"pTooltip="Editar" tooltipPosition="top"></a>
+                    <span style="margin-left: 5px"></span>
+                    <button pButton type="button" icon="pi pi-trash" iconPos="left" pTooltip="Apagar" tooltipPosition="top"
+                    (click)="confirmarExclusao(lancamento)"></button>
+
+                </td>
+            </tr>
+        </ng-template>
+
+      </p-table>
+
     </div>
 
-    <div  class="ui-g-12 ui-fluid">
-      <label>Descrição</label>
-      <input type="text" pInputText />
-    </div>
+</div>
 
-    <div class="ui-g-12">
-      <label style="display: block"> Vencimento </label>
-      <input type="text" pInputText  style="width: 95px"/>
-
-      <label style="margin: 5px"> até </label>
-      <input type="text" pInputText style="width: 95px" />
-    </div>
 
     <div class="ui-g-12">
         <label >
-            <button pButton type="submit" label="Pesquisar" ></button>
+            <button pButton type="submit" label="Novo lançamento" ></button>
         </label>
     </div>
-
-
-  </div>
-
-  <div class="ui-g">
-      <div class="ui-g-12">
-      <app-lancamentos-grid [lancamentos]="lancamentos"></app-lancamentos-grid>
-      </div>
-
-  </div>
-
-  <div class="ui-g-12">
-      <label >
-          <button pButton type="submit" label="Novolancamento" ></button>
-      </label>
-  </div>
 
 </div>
