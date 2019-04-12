@@ -18,10 +18,9 @@ export class LancamentoCadastroComponent implements OnInit {
     {label: 'Despesa', value: 'DESPESA'},
   ];
 
+  pessoas = [];
   categorias = [];
   lancamento = new Lancamento();
-
-  pessoasArray = [];
   constructor(
     private categoriaService: CategoriaService,
     private errorHandlerService: ErrorHandlerService,
@@ -47,9 +46,14 @@ export class LancamentoCadastroComponent implements OnInit {
 
   // busca todos na base
   pesquisarTodosPessoas() {
-    this.pessoaService.pesquisarTodos().subscribe(
+    this.pessoaService.pesquisar().subscribe(
       pessoas => {
-        this.pessoasArray = pessoas.map(p => ({label: p.nome, value: p.codigo}));
+        //extraimos as pessoas
+        pessoas = pessoas.content;
+        this.pessoas = pessoas.map(p => ({
+          label: p.nome,
+          value: p.codigo,
+        }));
       },
       error => {
         this.errorHandlerService.handler(error);
@@ -60,12 +64,12 @@ export class LancamentoCadastroComponent implements OnInit {
   salvar(form: FormControl) {
     this.lancamentoService.adicionar(this.lancamento).subscribe(
       Lancamento => {
-        console.log(Lancamento);
         this.toastyService.success('Lançamento adicionado com sucesso.');
         form.reset();
         this.lancamento = new Lancamento();
       },
       error => {
+        console.log(error)
         this.errorHandlerService.handler(error);
       }
     );
@@ -73,6 +77,6 @@ export class LancamentoCadastroComponent implements OnInit {
 
   ngOnInit() {
     this.pesquisarTodosPessoas();
-    this.pesquisarCategorias(); 
+    this.pesquisarCategorias();
   }
 }

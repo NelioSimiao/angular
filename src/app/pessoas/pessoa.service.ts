@@ -53,13 +53,18 @@ export class PessoaService {
   }
 
   // busca todas pessoas na base
-  pesquisarTodos(): Observable<any> {
+  pesquisar(): Observable<any> {
     const httpHeaders = new HttpHeaders()
       .set('Accept', 'application/json')
       .set('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-    return this.http.get(this.pessoaUrl, {
-      headers: httpHeaders }).pipe(catchError(this.errorHandler));
+    return this.http
+      .get(this.pessoaUrl, {
+        headers: httpHeaders,
+      })
+      .pipe(catchError(this.errorHandler));
   }
+
+
 
    // actualiza na base por ID
   actualiza(codigo: number): Observable<any> {
