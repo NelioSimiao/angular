@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams,HttpErrorResponse} from '@angular/common/http';
 import {Observable,throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import { Pessoa } from '../core/model';
 
 
 
@@ -87,9 +88,17 @@ export class PessoaService {
     }).pipe(catchError(this.errorHandler));
   }
 
-
-
-  
+  adicionar(pessoa: Pessoa): Observable<any> {
+    console.log(pessoa)
+    const httpHeaders = new HttpHeaders()
+      .set('Accept', 'application/json')
+      .set('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    return this.http
+      .post(this.pessoaUrl, pessoa, {
+        headers: httpHeaders,
+      })
+      .pipe(catchError(this.errorHandler));
+  }
   private errorHandler(error: any) {
     return throwError(error);
   }
