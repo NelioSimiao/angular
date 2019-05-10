@@ -15,12 +15,12 @@
 
 
     <div class="ui-g-12 ui-md-9 ui-fluid">
-      <label>Logradouro</label>
+      <label>Lagradouro</label>
       <input pInputText type="text"
-      name="logradouro"  [(ngModel)]="pessoa.endereco.logradouro"
-      ngModel #logradouro="ngModel" required />
+      name="logradouro"  [(ngModel)]="pessoa.endereco.lagradouro"
+      ngModel #lagradouro="ngModel" required />
 
-     <app-message [control]="logradouro" error="required" 
+     <app-message [control]="lagradouro" error="required" 
       text="Informe o Logradouro.">
        </app-message> 
 
@@ -59,8 +59,8 @@
     <div class="ui-g-12  ui-md-4  ui-fluid">
       <label>CEP</label>
       <p-inputMask mask="99-9999"
-      name="cep"   [(ngModel)]="pessoa.endereco.cep"
-      ngModel #cep="ngModel" required ></p-inputMask>
+      name="cep"  
+      ngModel #cep="ngModel"  ></p-inputMask>
 
      <app-message [control]="cep" error="required" 
       text="Informe o cep.">

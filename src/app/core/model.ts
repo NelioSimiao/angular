@@ -24,7 +24,6 @@ export class Endereco {
   complemento: string;
   cidade: string;
   estado: string;
-  cep: string;
 }
 
 export class Categoria {
